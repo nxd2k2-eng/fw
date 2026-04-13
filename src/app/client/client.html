@@ -1,155 +1,32 @@
-<!-- Header/Navigation -->
-<header class="navbar-section">
-  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
-    <div class="container-lg">
-      <a class="navbar-brand fw-bold" href="#">
-        <span class="logo">ShopHub</span>
-      </a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarNav"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto align-items-center">
-          <li class="nav-item">
-            <a class="nav-link" href="#">Trang Chủ</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Sản Phẩm</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Liên Hệ</a>
-          </li>
-          <li class="nav-item ms-2">
-            <button class="btn btn-light cart-btn">🛒 Giỏ (0)</button>
-          </li>
-        </ul>
-      </div>
+﻿<div class="slider-wrapper">
+  <div class="slider-stage">
+    <div class="slide active">
+      <img [src]="currentSlide.src" [alt]="currentSlide.alt" />
+      <div class="slide-title"><h2>{{ currentSlide.title }}</h2></div>
     </div>
-  </nav>
-</header>
 
-<!-- Hero Section -->
-<section class="hero-section">
-  <div class="container-lg">
-    <div class="hero-content">
-      <h1 class="hero-title">Khám Phá Sản Phẩm Tuyệt Vời</h1>
-      <p class="hero-subtitle">
-        Chất lượng cao, giá tốt nhất, giao hàng nhanh
-      </p>
-      <img src="/img/nui.jpg" alt="Phong cảnh núi" class="hero-image">
+    <div class="slide-counter">
+      <span>{{ currentIndex() + 1 }}</span> / <span>{{ slideCount }}</span>
+    </div>
+
+    <div class="dots">
+
+      @for (image of slides; track image.src; let i = $index) {
+        <button
+          type="button"
+          class="dot"
+          [class.active]="i === currentIndex()"
+          (click)="goTo(i)"
+          [attr.aria-label]="'Ảnh ' + (i + 1)"
+        ></button>
+      }
     </div>
   </div>
-</section>
 
-<!-- Main Content -->
-<main class="py-5">
-  <div class="container-lg">
-    <!-- Filter Section -->
-    <div class="filter-section mb-5">
-      <h3 class="mb-3">Danh Mục</h3>
-      <div class="category-buttons">
-        @for (cat of categories; track cat.id) {
-          <button
-            class="category-btn"
-            [class.active]="selectedCategory === cat.id"
-            (click)="selectedCategory = cat.id"
-          >
-            {{ cat.name }}
-          </button>
-        }
-      </div>
-    </div>
-
-    <!-- Products Grid -->
-    <div class="products-section">
-      <h2 class="section-title mb-4">
-        @if (selectedCategory === 'all') {
-          Tất Cả Sản Phẩm
-        } @else {
-          {{ categories.find(cat => cat.id === selectedCategory)?.name || 'Danh Mục' }}
-        }
-      </h2>
-
-      <div class="row g-4">
-        @for (product of filteredProducts; track product.id) {
-          <div class="col-12 col-sm-6 col-lg-3">
-            <div class="product-card">
-              <div class="product-image">
-                <img
-                  [src]="product.image"
-                  [alt]="product.name"
-                  class="img-fluid"
-                />
-                <div class="product-badge">Hot</div>
-                <button class="wishlist-btn">❤</button>
-              </div>
-
-              <div class="product-info">
-                <h5 class="product-name">{{ product.name }}</h5>
-
-                <div class="product-rating">
-                  <span class="stars">{{ product.rating }}★</span>
-                  <span class="reviews">({{ product.reviews }} đánh giá)</span>
-                </div>
-
-                <div class="product-footer">
-                  <p class="product-price">{{ formatPrice(product.price) }}</p>
-                  <button class="btn btn-primary btn-sm w-100">
-                    Thêm Vào Giỏ
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        }
-      </div>
-    </div>
-  </div>
-</main>
-
-<!-- Footer -->
-<footer class="footer-section py-5">
-  <div class="container-lg">
-    <div class="row">
-      <div class="col-md-3 mb-3">
-        <h6>Về ShopHub</h6>
-        <p class="small text-muted">
-          Platform mua sắm trực tuyến hàng đầu tại Việt Nam
-        </p>
-      </div>
-      <div class="col-md-3 mb-3">
-        <h6>Liên Kết</h6>
-        <ul class="list-unstyled small">
-          <li><a href="#" class="text-decoration-none">Về Chúng Tôi</a></li>
-          <li><a href="#" class="text-decoration-none">Chính Sách</a></li>
-          <li><a href="#" class="text-decoration-none">Điều Khoản</a></li>
-        </ul>
-      </div>
-      <div class="col-md-3 mb-3">
-        <h6>Hỗ Trợ</h6>
-        <ul class="list-unstyled small">
-          <li><a href="#" class="text-decoration-none">Liên Hệ</a></li>
-          <li><a href="#" class="text-decoration-none">FAQ</a></li>
-          <li><a href="#" class="text-decoration-none">Theo Dõi Đơn</a></li>
-        </ul>
-      </div>
-      <div class="col-md-3 mb-3">
-        <h6>Theo Dõi</h6>
-        <div class="social-links">
-          <a href="#" class="social-link">f</a>
-          <a href="#" class="social-link">in</a>
-          <a href="#" class="social-link">tw</a>
-        </div>
-      </div>
-    </div>
-    <hr />
-    <div class="text-center small text-muted">
-      <p>&copy; 2026 ShopHub. Tất cả quyền được bảo lưu.</p>
-    </div>
-  </div>
-</footer>
+  <button class="arrow arrow-prev" type="button" aria-label="Ảnh trước" (click)="goPrev()">
+    <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/>></svg>
+  </button>
+  <button class="arrow arrow-next" type="button" aria-label="Ảnh tiếp theo" (click)="goNext()">
+    <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/>></svg>
+  </button>
+</div>
