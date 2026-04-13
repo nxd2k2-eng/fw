@@ -20,6 +20,7 @@ export class Client {
     { src: '/img/Cursor.jpg', alt: 'Cursor AI', title: 'Cursor AI' },
     { src: '/img/copilot.jpg', alt: 'Copilot AI', title: 'Copilot AI' },
     { src: '/img/chatgpt.jpg', alt: 'ChatGPT', title: 'ChatGPT AI' },
+    { src: '/img/me.jpg', alt: 'me', title: 'Trai đẹp :)))' },
   ];
 
   currentIndex = signal(0);
