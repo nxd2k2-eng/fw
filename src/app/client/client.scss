@@ -1,0 +1,346 @@
+:host {
+  display: block;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+// ============ Navbar ============
+.navbar-section {
+  .navbar-brand {
+    font-size: 1.8rem;
+    color: #007bff;
+
+    .logo {
+      background: linear-gradient(135deg, #007bff, #0056b3);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+  }
+
+  .nav-link {
+    font-weight: 500;
+    color: #333 !important;
+    margin: 0 0.5rem;
+    transition: all 0.3s ease;
+
+    &:hover {
+      color: #007bff !important;
+    }
+  }
+
+  .cart-btn {
+    font-weight: 600;
+    border-radius: 25px;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: #007bff !important;
+      color: white;
+      transform: scale(1.05);
+    }
+  }
+}
+
+// ============ Hero Section ============
+.hero-section {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 60px 20px;
+  text-align: center;
+
+  .hero-content {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .hero-title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  .hero-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.95;
+  }
+
+  .search-bar {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 2rem;
+
+    input {
+      border-radius: 25px;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      font-size: 1rem;
+    }
+
+    button {
+      border-radius: 25px;
+      padding: 0.75rem 2rem;
+      font-weight: 600;
+      background-color: #ff6b6b;
+      border: none;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background-color: #ff5252;
+        transform: translateY(-2px);
+      }
+    }
+  }
+}
+
+// ============ Filter Section ============
+.filter-section {
+  h3 {
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 1.5rem;
+  }
+
+  .category-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+
+    .category-btn {
+      padding: 0.75rem 1.5rem;
+      border: 2px solid #ddd;
+      border-radius: 25px;
+      background-color: white;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      color: #333;
+
+      &:hover {
+        border-color: #007bff;
+        color: #007bff;
+      }
+
+      &.active {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        border-color: transparent;
+        color: white;
+      }
+    }
+  }
+}
+
+// ============ Products Section ============
+.products-section {
+  .section-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 2rem;
+  }
+}
+
+// ============ Product Card ============
+.product-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  }
+
+  .product-image {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 1;
+    background-color: #f5f5f5;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    &:hover img {
+      transform: scale(1.1);
+    }
+
+    .product-badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: #ff6b6b;
+      color: white;
+      padding: 0.5rem 0.75rem;
+      border-radius: 20px;
+      font-weight: 700;
+      font-size: 0.75rem;
+    }
+
+    .wishlist-btn {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background-color: white;
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &:hover {
+        background-color: #ff6b6b;
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  .product-info {
+    padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .product-name {
+    font-weight: 700;
+    color: #333;
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+    line-height: 1.4;
+    min-height: 2.8rem;
+  }
+
+  .product-rating {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+
+    .stars {
+      font-weight: 700;
+      color: #ff6b6b;
+    }
+
+    .reviews {
+      color: #999;
+    }
+  }
+
+  .product-footer {
+    margin-top: auto;
+
+    .product-price {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #007bff;
+      margin-bottom: 0.75rem;
+      margin: 0;
+    }
+
+    button {
+      font-weight: 600;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
+      }
+    }
+  }
+}
+
+// ============ Footer ============
+.footer-section {
+  background-color: #1a1a1a;
+  color: white;
+  margin-top: 5rem;
+
+  h6 {
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #ffffff;
+  }
+
+  a {
+    color: #aaa;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: #007bff;
+    }
+  }
+
+  .social-links {
+    display: flex;
+    gap: 1rem;
+
+    .social-link {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #333;
+      border-radius: 50%;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background-color: #007bff;
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  hr {
+    border-color: #333;
+  }
+}
+
+// ============ Responsive ============
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2rem !important;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem !important;
+  }
+
+  .search-bar {
+    flex-direction: column;
+
+    input,
+    button {
+      width: 100%;
+    }
+  }
+
+  .category-buttons {
+    gap: 0.5rem !important;
+
+    .category-btn {
+      padding: 0.5rem 1rem !important;
+      font-size: 0.9rem;
+    }
+  }
+}
